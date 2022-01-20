@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build:win": "craco build & rename build docs",
     "test": "craco test"
   },
   "eslintConfig": {
