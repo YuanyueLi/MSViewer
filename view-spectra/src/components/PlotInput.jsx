@@ -14,8 +14,8 @@ const PlotInput = (props) => {
             ...stateData,
             specA: stateSpectrum1,
             specB: stateSpectrum2
-        });
-    }, [stateSpectrum1, stateSpectrum2]);
+        }) // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [stateSpectrum1, stateSpectrum2])
 
 
     return <>
@@ -25,12 +25,14 @@ const PlotInput = (props) => {
         <Divider plain style={{marginTop: "8px", marginBottom: "8px"}}>Plot size</Divider>
         <Row>
             <Col span={12}>Height (px): <InputNumber
+                precision={0}
                 step={50} min={50}
-                defaultValue={stateData.height}
+                value={stateData.height}
                 onChange={(e) => setData({...stateData, height: e})}/></Col>
             <Col span={12}>Weight (px): <InputNumber
+                precision={0}
                 step={50} min={50}
-                defaultValue={stateData.width}
+                value={stateData.width}
                 onChange={(e) => setData({...stateData, width: e})}/></Col>
         </Row>
     </>

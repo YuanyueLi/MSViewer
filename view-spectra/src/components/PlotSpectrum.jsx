@@ -96,7 +96,7 @@ const PlotSpectrum = (props) => {
             import('plotly.js').then(Plotly => {
                 //console.log(spectrum, precursor_mz)
                 let spectrumUp, spectrumDown
-                let plotComparisonSpec = false
+                let plotComparisonSpec;
                 if (peaksB) {
                     plotComparisonSpec = true
                     spectrumUp = funcNormalizeSpec(peaksA)
@@ -215,7 +215,7 @@ const PlotSpectrum = (props) => {
             <div hidden={!stateEmpty}>
                 <Row justify="space-around" align={"middle"} style={{height: "600px"}}>
                     <Col>
-                        <h1>Input the spectral data left to visual it.</h1>
+                        <h1>Input the spectral data to visual it.</h1>
                     </Col>
                 </Row>
             </div>
