@@ -1,0 +1,10 @@
+runtime: nodejs16
+instance_class: F1
+automatic_scaling:
+  max_instances: 1
+handlers:
+  - url: /
+    static_files: view-spectra/build/index.html
+    upload: view-spectra/build/index.html
+  - url: /
+    static_dir: view-spectra/build
