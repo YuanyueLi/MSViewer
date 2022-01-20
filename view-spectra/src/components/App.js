@@ -1,42 +1,38 @@
 import 'antd/dist/antd.less';
 import './App.css';
 import {useState, useEffect} from 'react';
-import {Row, Col, Button} from 'antd';
-import SpectrumInput from "./SpectrumInput";
+import {Row, Col} from 'antd';
 import PlotSpectrum from "./PlotSpectrum";
+import PlotInput from "./PlotInput";
 
 function App() {
-    const [stateSpectrum1, setSpectrum1] = useState({precursorMZ: null, peaks: ""});
-    const [stateSpectrum2, setSpectrum2] = useState({precursorMZ: null, peaks: ""});
+    const [statePlotData, setPlotData] = useState({
+        height: 400,
+        width: 600,
+        specA: {},
+        specB: {}
+    })
 
     useEffect(() => {
-        if (stateSpectrum1) {
-            console.log(stateSpectrum1);
+        if (statePlotData) {
+            // console.log(statePlotData)
         }
-    }, [stateSpectrum1]);
-
+    }, [statePlotData])
 
     return (
         <div>
-            <Row justify={"center"}>
+            <Row justify={"center"}
+                 style={{"box-shadow": "0 2px 4px 0 rgba(0, 0, 0, 0.2)"}}>
+                <h2>Spectra Visualizer</h2>
+            </Row>
+            <br/>
+            <Row justify={"center"} align={"middle"}>
                 <Col span={6}>
-                    <Row>
-                        Input your spectrum here:
-                    </Row>
-                    <SpectrumInput stateSpectrum={stateSpectrum1} setSpectrum={setSpectrum1}/>
-                    <Row>
-                        If you want to see a head-to-tail comparison, input another spectrum here:
-                    </Row>
-                    <SpectrumInput stateSpectrum={stateSpectrum2} setSpectrum={setSpectrum2}/>
+                    <PlotInput stateData={statePlotData} setData={setPlotData}/>
                 </Col>
                 <Col span={16}>
-                    <Row justify={"center"}>
-                        <PlotSpectrum
-                            height={400}
-                            precursorMzA={stateSpectrum1.precursorMZ}
-                            peaksA={stateSpectrum1.peaks}
-                            precursorMzB={stateSpectrum2.precursorMZ}
-                            peaksB={stateSpectrum2.peaks}/>
+                    <Row justify={"center"} align={"middle"}>
+                        <PlotSpectrum data={statePlotData}/>
                     </Row>
                 </Col>
             </Row>
