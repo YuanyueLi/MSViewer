@@ -1,6 +1,4 @@
-# Spectral Visualization
-
-## A small tools to plot spectra.
+# Spectral Visualization - a tool to visualize spectra.
 
 ### Go to [https://yuanyueli.github.io/SpectralVisualization/](https://yuanyueli.github.io/SpectralVisualization/) to use this tool.
 
