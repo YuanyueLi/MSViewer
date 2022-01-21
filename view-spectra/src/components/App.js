@@ -23,12 +23,6 @@ function App() {
         }
     }, [])
 
-    useEffect(() => {
-        if (statePlotData) {
-            // console.log(statePlotData)
-        }
-    }, [statePlotData])
-
     return (
         <div>
             <Row justify={"center"}

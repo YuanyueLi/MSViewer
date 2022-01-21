@@ -10,6 +10,13 @@ const PlotInput = (props) => {
     const [stateSpectrum2, setSpectrum2] = useState({precursorMz: null, peaks: ""});
 
     useEffect(() => {
+        setSpectrum1({
+            precursorMz: 179.0697,
+            peaks: "133.0648\t19.463591\n151.0754\t8.644951\n155.9745\t3.628786\n161.0597\t100"
+        })
+    }, []);
+
+    useEffect(() => {
         setData({
             ...stateData,
             specA: stateSpectrum1,
@@ -23,13 +30,13 @@ const PlotInput = (props) => {
         <Divider plain style={{marginTop: "8px", marginBottom: "8px"}}>Tail spectrum (optional)</Divider>
         <SpectrumInput stateSpectrum={stateSpectrum2} setSpectrum={setSpectrum2}/>
         <Divider plain style={{marginTop: "8px", marginBottom: "8px"}}>Plot size</Divider>
-        <Row>
-            <Col span={12}>Height (px): <InputNumber
+        <Row justify={"center"}>
+            <Col span={11}>Height (px): <InputNumber
                 precision={0}
                 step={50} min={50}
                 value={stateData.height}
                 onChange={(e) => setData({...stateData, height: e})}/></Col>
-            <Col span={12}>Weight (px): <InputNumber
+            <Col span={11}>Weight (px): <InputNumber
                 precision={0}
                 step={50} min={50}
                 value={stateData.width}
