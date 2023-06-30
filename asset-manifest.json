@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/SpectralVisualization/static/css/main.e6c13ad2.css",
-    "main.js": "/SpectralVisualization/static/js/main.d6464f7c.js",
-    "index.html": "/SpectralVisualization/index.html",
-    "main.e6c13ad2.css.map": "/SpectralVisualization/static/css/main.e6c13ad2.css.map",
-    "main.d6464f7c.js.map": "/SpectralVisualization/static/js/main.d6464f7c.js.map"
+    "main.css": "/MSViewer/static/css/main.e6c13ad2.css",
+    "main.js": "/MSViewer/static/js/main.d6464f7c.js",
+    "index.html": "/MSViewer/index.html",
+    "main.e6c13ad2.css.map": "/MSViewer/static/css/main.e6c13ad2.css.map",
+    "main.d6464f7c.js.map": "/MSViewer/static/js/main.d6464f7c.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
