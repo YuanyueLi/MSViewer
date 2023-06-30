@@ -1,6 +1,6 @@
 # Spectral Visualization - a tool to visualize spectra.
 
-### Go to [https://yuanyueli.github.io/SpectralVisualization/](https://yuanyueli.github.io/SpectralVisualization/) to use this tool.
+### Go to [https://yuanyueli.github.io/MSViewer](https://yuanyueli.github.io/MSViewer) to use this tool.
 
 
 * This tools can draw your spectrum in real time, just input the data and get the interactive plot.
