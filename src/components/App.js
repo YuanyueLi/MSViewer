@@ -1,10 +1,10 @@
-import {useState, useEffect} from 'react';
-import {Row, Col, Divider} from 'antd';
-import {atom, useAtom} from "jotai";
+import { useState, useEffect } from 'react';
+import { Row, Col, Divider, Alert } from 'antd';
+import { atom, useAtom } from "jotai";
 
 import PlotSpectrum from "./PlotSpectrum";
 import PlotInput from "./PlotInput";
-import {calculateEntropySimilarity} from "./CalculateEntropySimilarity";
+import { calculateEntropySimilarity } from "./CalculateEntropySimilarity";
 
 const atomParams = atom({
     height: 400, width: 600,
@@ -59,32 +59,36 @@ function App() {
 
     return (<div>
         <Row justify={"center"}
-             style={{"boxShadow": "0 2px 4px 0 rgba(0, 0, 0, 0.2)"}}>
-            <h2 style={{marginBlock: "6px"}}>Spectra Visualizer</h2>
+            style={{ "boxShadow": "0 2px 4px 0 rgba(0, 0, 0, 0.2)" }}>
+            <h2 style={{ marginBlock: "6px" }}>Spectra Visualizer</h2>
         </Row>
-        <br/>
+        <br />
         <Row justify={"space-evenly"} align={"top"}>
             <Col lg={6} md={23}>
-                <PlotInput/>
+                <PlotInput />
             </Col>
             <Col lg={12} md={23}>
                 {
                     stateEntropySimilarity ? <>
-                        <Divider plain style={{marginTop: "8px", marginBottom: "8px"}}>Spectral similarity</Divider>
+                        <Divider plain style={{ marginTop: "8px", marginBottom: "8px" }}>Spectral similarity</Divider>
                         <Row>
                             <Col span={24}>
-                                Entropy similarity: {stateEntropySimilarity.toFixed(3)}
+                                <Alert message={<>
+                                    Entropy similarity: {stateEntropySimilarity.toFixed(3)}
+                                </>
+                                } type="info" />
+
                             </Col>
                         </Row>
-                        <Divider plain style={{marginTop: "8px", marginBottom: "8px"}}>Plot</Divider>
+                        <Divider plain style={{ marginTop: "8px", marginBottom: "8px" }}>Plot</Divider>
                     </> : <></>
                 }
                 <Row>
                     <Col span={24}>
                         <PlotSpectrum height={stateParams.height}
-                                      width={stateParams.width}
-                                      specA={stateSpecA}
-                                      specB={stateSpecB}/>
+                            width={stateParams.width}
+                            specA={stateSpecA}
+                            specB={stateSpecB} />
                     </Col>
                 </Row>
             </Col>
@@ -92,5 +96,5 @@ function App() {
     </div>);
 }
 
-export {atomParams, atomSpecA, atomSpecB};
+export { atomParams, atomSpecA, atomSpecB };
 export default App;
