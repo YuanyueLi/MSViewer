@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Row, Col, Tabs, Typography} from 'antd';
+import {Row, Col, Tabs, Typography, Alert} from 'antd';
 import Plot from 'react-plotly.js';
 
 const funcCheckPeaks = (peaks) => {
@@ -15,7 +15,12 @@ const funcCheckPeaks = (peaks) => {
 }
 
 const funcNormalizeSpec = (precursorMz, peaks) => {
-    const intensityMax = Math.max.apply(Math, peaks.map((p) => p[0] < precursorMz - 1.6 ? p[1] : 0))
+    let intensityMax = 0;
+    if (precursorMz && precursorMz > 0) {
+        intensityMax = Math.max.apply(Math, peaks.map((p) => p[0] < precursorMz - 1.6 ? p[1] : 0))
+    } else {
+        intensityMax = Math.max.apply(Math, peaks.map((p) => p[1]))
+    }
     if (intensityMax > 0) {
         peaks = peaks.map(p => [p[0], p[1] / intensityMax])
     }
@@ -188,7 +193,7 @@ const PlotSpectrum = (props) => {
                 dataPlot.layout.width = propsWidth
                 dataPlot.layout.autosize = false
             }
-            console.log(dataPlot)
+            // console.log(dataPlot)
             setData(dataPlot)
         } else {
             setData({data: [], layout: {}, config: {}})
@@ -213,9 +218,7 @@ const PlotSpectrum = (props) => {
             <Row justify={"center"} align={"middle"}>
                 <Col span={24} style={{height: propsHeight * 1.2, width: propsWidth * 1.2}}>
                     {(stateLoading || (!((stateData.data && stateData.data.length > 0)))) ? <Row justify={"center"}>
-                            <Typography.Title level={4} style={{marginTop: 50}}>
-                                No data available, please check your input.
-                            </Typography.Title>
+                            <Alert message="Please input at least one spectrum to view the plot." type="info" showIcon/>
                         </Row> :
                         <Plot
                             style={{
