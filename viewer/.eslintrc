@@ -1,0 +1,5 @@
+{
+  "rules": {
+    "no-restricted-globals": ["error", "Event", "fdescribe"]
+  }
+}
