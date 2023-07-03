@@ -1,6 +1,6 @@
 {
-  "short_name": "Spectra Visualizer",
-  "name": "Realtime visualizer for MS/MS spectra",
+  "short_name": "MSViewer",
+  "name": "MS/MS spectra viewer",
   "icons": [
     {
       "src": "logo.png",
