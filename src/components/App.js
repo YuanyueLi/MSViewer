@@ -60,7 +60,7 @@ function App() {
     return (<div>
         <Row justify={"center"}
             style={{ "boxShadow": "0 2px 4px 0 rgba(0, 0, 0, 0.2)" }}>
-            <h2 style={{ marginBlock: "6px" }}>Spectra Visualizer</h2>
+            <h2 style={{ marginBlock: "6px" }}>MS Viewer</h2>
         </Row>
         <br />
         <Row justify={"space-evenly"} align={"top"}>
