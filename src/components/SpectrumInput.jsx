@@ -11,7 +11,7 @@ const SpectrumInput = (props) => {
                     value={props.precursorMz}
                     placeholder={"500.321"}
                     onChange={(e) => props.setPrecursorMz(e.target.value)}
-                    style={{width: "100px"}}/>
+                    style={{width: "150px"}}/>
             </Col>
         </Row>
         <Row justify={"left"}>
