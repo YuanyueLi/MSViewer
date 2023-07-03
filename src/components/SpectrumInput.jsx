@@ -9,6 +9,7 @@ const SpectrumInput = (props) => {
             <Col span={16}>
                 <Input
                     value={props.precursorMz}
+                    placeholder={"500.321"}
                     onChange={(e) => props.setPrecursorMz(e.target.value)}
                     style={{width: "100px"}}/>
             </Col>
@@ -18,7 +19,9 @@ const SpectrumInput = (props) => {
                 Peaks:
             </Col>
             <Input.TextArea
+                allowClear={true}
                 rows="9"
+                placeholder={"100.321\t30.0\n300.321\t100.0\n..."}
                 value={props.peaks}
                 onChange={(e) => props.setPeaks(e.target.value)}/>
         </Row>

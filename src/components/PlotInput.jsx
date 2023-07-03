@@ -1,4 +1,4 @@
-import {Row, Col, InputNumber, Divider, Checkbox, Space, Alert} from 'antd';
+import {Row, Col, InputNumber, Divider, Checkbox, Space, Alert, Button} from 'antd';
 import {useState, useEffect} from 'react';
 import {useAtom} from "jotai";
 import SpectrumInput from "./SpectrumInput";
@@ -102,6 +102,12 @@ const PlotInput = (props) => {
     }, [stateSpectrum2, stateRemovePrecursor, stateRemovePrecursorValue])
 
     return <>
+        <Row justify="end">
+            <Button onClick={() => {
+                setSpectrum1({precursorMz: null, peaks: ""});
+                setSpectrum2({precursorMz: null, peaks: ""});
+            }}>Clear all spectra</Button>
+        </Row>
         <SpectrumInput precursorMz={stateSpectrum1.precursorMz} peaks={stateSpectrum1.peaks}
                        setPrecursorMz={(e) => setSpectrum1({...stateSpectrum1, precursorMz: e})}
                        setPeaks={(e) => setSpectrum1({...stateSpectrum1, peaks: e})}/>
