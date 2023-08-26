@@ -19,11 +19,11 @@ jobs:
       - name: Deploy 🚀 to yuanyue.li
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages # The branch the action should deploy to.
+          branch: main # The branch the action should deploy to.
           folder: build # The folder the action should deploy.
           ssh-key: ${{ secrets.DEPLOY_KEY }}
           repository-name: YuanyueLi/yuanyueli.github.io
-          target-folder: static/MSViewer
+          target-folder: static/msviewer
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
