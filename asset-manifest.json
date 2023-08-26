@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "./static/css/main.e6c13ad2.css",
-    "main.js": "./static/js/main.c1d40d0c.js",
-    "index.html": "./index.html",
-    "main.e6c13ad2.css.map": "./static/css/main.e6c13ad2.css.map",
-    "main.c1d40d0c.js.map": "./static/js/main.c1d40d0c.js.map"
+    "main.css": "/msviewer/static/css/main.e6c13ad2.css",
+    "main.js": "/msviewer/static/js/main.c1d40d0c.js",
+    "index.html": "/msviewer/index.html",
+    "main.e6c13ad2.css.map": "/msviewer/static/css/main.e6c13ad2.css.map",
+    "main.c1d40d0c.js.map": "/msviewer/static/js/main.c1d40d0c.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
