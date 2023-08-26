@@ -1,6 +1,8 @@
-# MSViewer - a tool to visualize spectra, calculate spectral similarity in real time
+# MSViewer
 
-### Go to [https://yuanyueli.github.io/MSViewer](https://yuanyueli.github.io/MSViewer) to use this tool.
+## A tool to visualize spectra, calculate spectral similarity in real time
+
+### Go to [https://yuanyue.li/msviewer](https://yuanyue.li/msviewer) to use this tool
 
 * This tools can draw your spectrum in real time, just input the data and get the interactive plot.
 
