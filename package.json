@@ -1,6 +1,6 @@
 {
   "name": "msviewer",
-  "homepage": "https://yuanyueli.github.io/MSViewer",
+  "homepage": "./",
   "version": "0.2.0",
   "private": true,
   "dependencies": {
