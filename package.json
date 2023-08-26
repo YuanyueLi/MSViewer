@@ -1,6 +1,6 @@
 {
   "name": "msviewer",
-  "homepage": "./",
+  "homepage": "https://yuanyue.li/msviewer/",
   "version": "0.2.0",
   "private": true,
   "dependencies": {
