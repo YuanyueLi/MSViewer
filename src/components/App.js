@@ -4,7 +4,7 @@ import { atom, useAtom } from "jotai";
 
 import PlotSpectrum from "./PlotSpectrum";
 import PlotInput from "./PlotInput";
-import { calculateEntropySimilarity } from "./CalculateEntropySimilarity";
+import { calculateEntropySimilarity,calculateUnweightedEntropySimilarity } from "./CalculateEntropySimilarity";
 
 const atomParams = atom({
     height: 400, width: 600,
@@ -44,6 +44,7 @@ function App() {
     // }, [stateParams])
 
     const [stateEntropySimilarity, setEntropySimilarity] = useState(null);
+    const [stateUnweightedEntropySimilarity, setUnweightedEntropySimilarity] = useState(null);
     useEffect(() => {
         if (((stateSpecA.peaksClean || []).length > 0) && ((stateSpecB.peaksClean || []).length > 0)) {
             calculateEntropySimilarity(stateSpecA.peaksClean, stateSpecB.peaksClean, {
@@ -51,6 +52,12 @@ function App() {
                 removeNoise: stateParams.remove_noise,
             }).then((result) => {
                 setEntropySimilarity(result);
+            })
+            calculateUnweightedEntropySimilarity(stateSpecA.peaksClean, stateSpecB.peaksClean, {
+                ms2ToleranceInDa: stateParams.matching_ms2_tol,
+                removeNoise: stateParams.remove_noise,
+            }).then((result) => {
+                setUnweightedEntropySimilarity(result);
             })
         } else {
             setEntropySimilarity(null);
@@ -60,7 +67,7 @@ function App() {
     return (<div>
         <Row justify={"center"}
             style={{ "boxShadow": "0 2px 4px 0 rgba(0, 0, 0, 0.2)" }}>
-            <h2 style={{ marginBlock: "6px" }}>MS Viewer</h2>
+            <h1 style={{ marginBlock: "6px", fontWeight:"normal" }}>MS Viewer</h1>
         </Row>
         <br />
         <Row justify={"space-evenly"} align={"top"}>
@@ -74,6 +81,7 @@ function App() {
                         <Row>
                             <Col span={24}>
                                 <Alert message={<>
+                                    Unweighted entropy similarity: {stateUnweightedEntropySimilarity.toFixed(3)}<br />
                                     Entropy similarity: {stateEntropySimilarity.toFixed(3)}
                                 </>
                                 } type="info" />

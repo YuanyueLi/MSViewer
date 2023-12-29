@@ -74,4 +74,40 @@ const calculateEntropySimilarity = async (peaksA, peaksB, options) => {
     })
 };
 
-export {wasm, calculateEntropySimilarity};
+const calculateUnweightedEntropySimilarity = async (peaksA, peaksB, options) => {
+    return wasm.then(([arrayMalloc,
+                          arrayFreeAndExtract,
+                          arrayFree,
+                          clean_spectrum,
+                          calculate_entropy_similarity,
+                          calculate_unweighted_entropy_similarity]) => {
+        // Set default options
+        const defaultOptions = {
+            ms2ToleranceInDa: 0.02,
+            removeNoise: 0.01,
+        }
+        options = {...defaultOptions, ...options};
+        const {ms2ToleranceInDa, removeNoise} = options;
+
+        // Flatten peaks
+        const peaksAFlat = [].concat(...peaksA);
+        const peaksBFlat = [].concat(...peaksB);
+
+        // Allocate memory
+        const peaksAHeap = arrayMalloc(new Float32Array(peaksAFlat));
+        const peaksBHeap = arrayMalloc(new Float32Array(peaksBFlat));
+
+        // Calculate entropy similarity
+        const result = calculate_unweighted_entropy_similarity(
+            peaksAHeap.byteOffset, peaksA.length,
+            peaksBHeap.byteOffset, peaksB.length,
+            ms2ToleranceInDa, -1,
+            1, -1, -1, removeNoise, 0);
+        arrayFree(peaksAHeap);
+        arrayFree(peaksBHeap);
+
+        return result;
+    })
+}
+
+export {wasm, calculateEntropySimilarity, calculateUnweightedEntropySimilarity};

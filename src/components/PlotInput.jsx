@@ -66,17 +66,11 @@ const PlotInput = (props) => {
     const [stateSpecB, setSpecB] = useAtom(atomSpecB);
 
     useEffect(() => {
-        const defaultSpectrum1 = {
-            precursorMz: 505.988,
-            peaks: "78.9592\t4.1\n158.9257\t161.94\n176.9363\t17.98\n238.8921\t6.99\n272.9577\t3.1\n370.9345\t3.3\n408.0122\t98.4\n409.0155\t7.59\n426.0229\t5.99\n487.9789\t6.49\n505.9892\t99.0\n506.9916\t79.92"
-        };
+        const defaultSpectrum1 = {precursorMz: null, peaks: ""};
         setSpectrum1(defaultSpectrum1);
         setSpecA({...stateSpecA, ...defaultSpectrum1,});
 
-        const defaultSpectrum2 = {
-            precursorMz: 426.022,
-            peaks: "78.9592\t4.7\n134.0476\t17.38\n158.9258\t31.77\n290.9684\t3.1\n328.046\t57.54\n329.0496\t3.6\n408.0126\t18.08\n426.0229\t99.0\n427.0255\t63.84"
-        }
+        const defaultSpectrum2 = {precursorMz: null, peaks: ""}
         setSpectrum2(defaultSpectrum2);
         setSpecB({...stateSpecB, ...defaultSpectrum2,});
     }, [])
@@ -103,15 +97,29 @@ const PlotInput = (props) => {
 
     return <>
         <Row justify="end">
-            <Button onClick={() => {
-                setSpectrum1({precursorMz: null, peaks: ""});
-                setSpectrum2({precursorMz: null, peaks: ""});
-            }}>Clear all spectra</Button>
+            <Space>
+                <Button onClick={() => {
+                    setSpectrum1({
+                            precursorMz: 505.988,
+                            peaks: "78.9592\t4.1\n158.9257\t161.94\n176.9363\t17.98\n238.8921\t6.99\n272.9577\t3.1\n370.9345\t3.3\n408.0122\t98.4\n409.0155\t7.59\n426.0229\t5.99\n487.9789\t6.49\n505.9892\t99.0\n506.9916\t79.92"
+                        }
+                    );
+                    setSpectrum2({
+                        precursorMz: 426.022,
+                        peaks: "78.9592\t4.7\n134.0476\t17.38\n158.9258\t31.77\n290.9684\t3.1\n328.046\t57.54\n329.0496\t3.6\n408.0126\t18.08\n426.0229\t99.0\n427.0255\t63.84"
+                    });
+                }}>Input example spectra</Button>
+                <Button onClick={() => {
+                    setSpectrum1({precursorMz: null, peaks: ""});
+                    setSpectrum2({precursorMz: null, peaks: ""});
+                }}>Clear all spectra</Button>
+            </Space>
         </Row>
+        <Divider plain style={{marginTop: "8px", marginBottom: "8px"}}>Top spectrum</Divider>
         <SpectrumInput precursorMz={stateSpectrum1.precursorMz} peaks={stateSpectrum1.peaks}
                        setPrecursorMz={(e) => setSpectrum1({...stateSpectrum1, precursorMz: e})}
                        setPeaks={(e) => setSpectrum1({...stateSpectrum1, peaks: e})}/>
-        <Divider plain style={{marginTop: "8px", marginBottom: "8px"}}>Tail spectrum (optional)</Divider>
+        <Divider plain style={{marginTop: "8px", marginBottom: "8px"}}>Bottom spectrum (optional)</Divider>
         <SpectrumInput precursorMz={stateSpectrum2.precursorMz} peaks={stateSpectrum2.peaks}
                        setPrecursorMz={(e) => setSpectrum2({...stateSpectrum2, precursorMz: e})}
                        setPeaks={(e) => setSpectrum2({...stateSpectrum2, peaks: e})}/>
