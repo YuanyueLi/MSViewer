@@ -154,7 +154,7 @@ const funcPlotSpectrum = (plotData) => {
         margin: {l: 55, r: 10, b: 30, t: 10, pad: 0},
     };
     if (plotComparisonSpec) {
-        layout.yaxis.title.text = 'Normalized intensity'
+        layout.yaxis.title.text = 'Normalized Intensity'
     }
     const config = {
         responsive: true,
@@ -210,7 +210,9 @@ const PlotSpectrum = (props) => {
     // }, [stateData.data])
     return (
         <div>
-            <Tabs defaultActiveKey="normal" centered onChange={(k) => setDisplayMode(k)}
+            <Tabs defaultActiveKey="normal" centered
+                  style={{width: propsWidth * 1}}
+                  onChange={(k) => setDisplayMode(k)}
                   items={[
                       {key: "normal", label: "Normal"},
                       {key: "neutral_loss", label: "Neutral loss"},
