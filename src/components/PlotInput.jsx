@@ -13,7 +13,7 @@ const funcCleanPeaks = (peaks) => {
         if (allPeaksArray.length > 1) {
             // Multiple lines, each line is a peak
             allPeaksArray.forEach(peak => {
-                let peakArray = peak.split(/[^\d.eE\-]+/).filter(n => n.trim()).map(parseFloat)
+                let peakArray = peak.split(/[^\d.eE\-+]+/).filter(n => n.trim()).map(parseFloat)
                 if (peakArray.length >= 2) {
                     peaks_clean.push([peakArray[0], peakArray[1]])
                 }
@@ -21,7 +21,7 @@ const funcCleanPeaks = (peaks) => {
         } else {
             // Single line, each peak is separated by some characters
             // Extract peaks
-            peaks.match(/[\d.eE\-]+/g).forEach(peak => {
+            peaks.match(/[\d.eE\-+]+/g).forEach(peak => {
                 peaks_clean.push(parseFloat(peak))
             })
 
